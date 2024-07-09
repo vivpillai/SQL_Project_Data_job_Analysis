@@ -1,7 +1,9 @@
 **Introduction**
+
 Focusing on data analyst roles,this project explores top - paying jobs, in demand skills and where high deamand meets high salary in data analytics.
 
 **Background**
+
 The questions I wanted to answer through my SQL queries were:
 
 **What are the top paying data analyst jobs?
