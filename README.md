@@ -19,9 +19,11 @@ Tools I used
 **Git and Github:** Essential for version control and sharing my SQL scripts and analysis,ensuring collaboration and project tracking.
 
 **The Analysis**
+
 Each query for this project aimed at investigating specific aspects of the data analyst job market. Here is how I approached each question:
 
 **Top-paying Data Analyst Jobs**
+
 To identify the highest-paying roles, I filtered data analyst positions by average yearly salary and location, focusing on remote jobs. 
 This query highlights the high paying opportunities in the field.
 
@@ -49,6 +51,7 @@ This query highlights the high paying opportunities in the field.
 **Job Title Variety:** There's a high diversity in job titles, from Data Analyst to Director of Analytics, reflecting varied roles and specializations within data analytics.
 
 **2. Skills for Top Paying Jobs**
+
 To understand what skills are required for the top-paying jobs, I joined the job postings with the skills data, providing insights into what employers value for high-compensation roles.
 
 WITH top_paying_jobs AS (
@@ -85,6 +88,7 @@ ORDER BY
 **Tableau** is also highly sought after, with a bold count of 6. Other skills like R, Snowflake, Pandas, and Excel show varying degrees of demand.
 
 **3. In-Demand Skills for Data Analysts**
+
 This query helped identify the skills most frequently requested in job postings, directing focus to areas with high demand.
 
 SELECT 
@@ -157,6 +161,7 @@ elasticsearch	    145,000
 Table of the average salary for the top 10 paying skills for data analysts
 
 **5. Most Optimal Skills to Learn**
+
 Combining insights from demand and salary data, this query aimed to pinpoint skills that are both in high demand and have high salaries, offering a strategic focus for skill development.
 
 SELECT 
