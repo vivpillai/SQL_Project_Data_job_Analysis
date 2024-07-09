@@ -6,7 +6,7 @@ Focusing on data analyst roles,this project explores top - paying jobs, in deman
 
 The questions I wanted to answer through my SQL queries were:
 
-**What are the top paying data analyst jobs?
+What are the top paying data analyst jobs?
 
 What skills are required for these top-paying jobs?
 
@@ -14,7 +14,7 @@ What skills are most in demand for data analyst?
 
 Which skills are associated with higher salaries?
 
-What are the most optimal skills to learn?**
+What are the most optimal skills to learn?
 
 Tools I used
 **SQL:** The backbone of my analysis to allowing me to query and unearth critical insights.
