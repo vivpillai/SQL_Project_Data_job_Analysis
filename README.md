@@ -76,30 +76,52 @@ This query highlights the high paying opportunities in the field.
 To understand what skills are required for the top-paying jobs, I joined the job postings with the skills data, providing insights into what employers value for high-compensation roles.
 
 WITH top_paying_jobs AS (
+
     SELECT	
+    
         job_id,
+        
         job_title,
+        
         salary_year_avg,
+        
         name AS company_name
+        
     FROM
+    
         job_postings_fact
+        
     LEFT JOIN company_dim ON job_postings_fact.company_id = company_dim.company_id
+    
     WHERE
+    
         job_title_short = 'Data Analyst' AND 
+        
         job_location = 'Anywhere' AND 
+        
         salary_year_avg IS NOT NULL
+        
     ORDER BY
+    
         salary_year_avg DESC
+        
     LIMIT 10
 )
 
 SELECT 
+
     top_paying_jobs.*,
+    
     skills
+    
 FROM top_paying_jobs
+
 INNER JOIN skills_job_dim ON top_paying_jobs.job_id = skills_job_dim.job_id
+
 INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
+
 ORDER BY
+
     salary_year_avg DESC;
     
 **Here's the breakdown of the most demanded skills for the top 10 highest paying data analyst jobs in 2023:**
@@ -115,18 +137,31 @@ ORDER BY
 This query helped identify the skills most frequently requested in job postings, directing focus to areas with high demand.
 
 SELECT 
+
     skills,
+    
     COUNT(skills_job_dim.job_id) AS demand_count
+    
 FROM job_postings_fact
+
 INNER JOIN skills_job_dim ON job_postings_fact.job_id = skills_job_dim.job_id
+
 INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
+
 WHERE
-    job_title_short = 'Data Analyst' 
+
+    job_title_short = 'Data Analyst'
+    
     AND job_work_from_home = True 
+    
 GROUP BY
+
     skills
+    
 ORDER BY
+
     demand_count DESC
+    
 LIMIT 5;
 
 **Here's the breakdown of the most demanded skills for data analysts in 2023**
@@ -135,6 +170,7 @@ SQL and Excel remain fundamental, emphasizing the need for strong foundational s
 Programming and Visualization Tools like Python, Tableau, and Power BI are essential, pointing towards the increasing importance of technical skills in data storytelling and decision support.
 
 **Skills**	    **Demand Count**
+
 SQL             7291
 
 Excel	        4611
@@ -152,19 +188,33 @@ Table of the demand for the top 5 skills in data analyst job postings
 Exploring the average salaries associated with different skills revealed which skills are the highest paying.
 
 SELECT 
+
     skills,
+    
     ROUND(AVG(salary_year_avg), 0) AS avg_salary
+    
 FROM job_postings_fact
+
 INNER JOIN skills_job_dim ON job_postings_fact.job_id = skills_job_dim.job_id
+
 INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
+
 WHERE
+
     job_title_short = 'Data Analyst'
+    
     AND salary_year_avg IS NOT NULL
+    
     AND job_work_from_home = True 
+    
 GROUP BY
+
     skills
+    
 ORDER BY
+
     avg_salary DESC
+    
 LIMIT 25;
 
 **Here's a breakdown of the results for top paying skills for Data Analysts:**
@@ -176,6 +226,7 @@ Software Development & Deployment Proficiency: Knowledge in development and depl
 Cloud Computing Expertise: Familiarity with cloud and data engineering tools (Elasticsearch, Databricks, GCP) underscores the growing importance of cloud-based analytics environments, suggesting that cloud proficiency significantly boosts earning potential in data analytics.
 
 **Skills	        Average Salary ($)**
+
 pyspark	            208,172
 
 bitbucket	        189,155
@@ -203,27 +254,47 @@ Table of the average salary for the top 10 paying skills for data analysts
 Combining insights from demand and salary data, this query aimed to pinpoint skills that are both in high demand and have high salaries, offering a strategic focus for skill development.
 
 SELECT 
+
     skills_dim.skill_id,
+    
     skills_dim.skills,
+    
     COUNT(skills_job_dim.job_id) AS demand_count,
+    
     ROUND(AVG(job_postings_fact.salary_year_avg), 0) AS avg_salary
+    
 FROM job_postings_fact
+
 INNER JOIN skills_job_dim ON job_postings_fact.job_id = skills_job_dim.job_id
+
 INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
+
 WHERE
+
     job_title_short = 'Data Analyst'
+    
     AND salary_year_avg IS NOT NULL
+    
     AND job_work_from_home = True 
+    
 GROUP BY
+
     skills_dim.skill_id
+    
 HAVING
+
     COUNT(skills_job_dim.job_id) > 10
+    
 ORDER BY
+
     avg_salary DESC,
+    
     demand_count DESC
+    
 LIMIT 25;
 
 **Skill ID	    Skills	    Demand Count	Average Salary ($)**
+
 8	               go	        27	            115,320
 
 234	           confluence	    11	            114,210
@@ -277,5 +348,6 @@ Insights from the analysis, several general insights emerged:
 **Skills with Higher Salaries:** Specialized skills, such as SVN and Solidity, are associated with the highest average salaries, indicating a premium on niche expertise.
 
 **Optimal Skills for Job Market Value:** SQL leads in demand and offers for a high average salary, positioning it as one of the most optimal skills for data analysts to learn to maximize their market value.
+
 **Closing Thoughts**
 This project enhanced my SQL skills and provided valuable insights into the data analyst job market. The findings from the analysis serve as a guide to prioritizing skill development and job search efforts. Aspiring data analysts can better position themselves in a competitive job market by focusing on high-demand, high-salary skills. This exploration highlights the importance of continuous learning and adaptation to emerging trends in the field of data analytics.
