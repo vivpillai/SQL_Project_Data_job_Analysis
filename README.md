@@ -351,16 +351,3 @@ Insights from the analysis, several general insights emerged:
 
 **Closing Thoughts**
 This project enhanced my SQL skills and provided valuable insights into the data analyst job market. The findings from the analysis serve as a guide to prioritizing skill development and job search efforts. Aspiring data analysts can better position themselves in a competitive job market by focusing on high-demand, high-salary skills. This exploration highlights the importance of continuous learning and adaptation to emerging trends in the field of data analytics.
-
-
-Skill ID	Skills	Demand Count	Average Salary ($)
-8	go	27	115320
-234	confluence	11	114210
-97	hadoop	22	113193
-80	snowflake	37	112948
-74	azure	34	111225
-77	bigquery	13	109654
-76	aws	32	108317
-4	java	17	106906
-194	ssis	12	106683
-233	jira	20	104918
